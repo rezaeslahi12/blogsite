@@ -1,0 +1,7 @@
+{%if Category_list  %}
+<ul>
+    {% for category in Category_list %}
+        <li><a href =" {% url 'index' category.id %}">{{ category.title }}</a></li>
+    {% endfor %}
+    </ul>
+{%endif%}

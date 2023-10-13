@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    {% if post_id and post_list %}
+    <ul>
+        {% for post in post_list %}
+            {% if post.id == post_id %}
+            <li>{{ post.content }} </li>
+
+            <img style= "width: 300px;" src = "{{post.image.url}}" alt = "image.jpg">
+            {% if user in post.likes.all %}
+                <a href = "{% url "unlike" post.id %}">unlike</a>
+            {%else%}
+                <a href = "{% url "like" post.id %}">like</a>
+            {% endif %}
+            {% else %}
+                {{" "}}{% comment " this line of code has a problem that needs to be fixed  " %}{% endcomment %}
+                
+            {% endif %}
+        {% endfor %}
+        
+    </ul>
+    {%if likes_count%}
+        Like:{{likes_count}}
+    {%else%}
+        Like:{{likes_count}}
+    {%endif%}
+{% else %}
+    <p>پستی یافت نشد.</p> 
+{% endif %}
+</body>
+</html>
