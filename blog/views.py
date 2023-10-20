@@ -1,12 +1,12 @@
-
 from django.shortcuts import render,redirect
-from django.contrib.auth.models import User
-
+# from django.contrib.auth.models import User
 from django.shortcuts import render
 from .models import Post,Category
 from django.http import HttpResponse
 from django.template import loader
+from django.conf import settings
 
+        
 def index(request,category_id):
     cat = Category.objects.get(id=category_id)
     category_title = cat.title

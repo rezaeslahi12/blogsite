@@ -7,8 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    
-
+    {% comment %} {% extends "home.html" %}
+    {%block content%}
+    {%end block%} {% endcomment %}
     {% if post_id and post_list %}
     <ul>
         {% for post in post_list %}

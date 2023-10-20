@@ -1,7 +1,31 @@
-{%if Category_list  %}
-<ul>
-    {% for category in Category_list %}
-        <li><a href =" {% url 'index' category.id %}">{{ category.title }}</a></li>
-    {% endfor %}
-    </ul>
-{%endif%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  <h2>Category_list</h2>
+  {%if Category_list  %}
+  <ul>
+      {% for category in Category_list %}
+          <li><a href =" {% url 'index' category.id %}">{{ category.title }}</a></li>
+      {% endfor %}
+      </ul>
+  {%endif%}
+  {% block content %}
+  {% if user.is_authenticated %}
+      <form action = "{% url "accounts:logout" %}" method = "post">
+          {% csrf_token %}
+      <button type="submit">logout</button><br>
+  {% endif %}
+  <a href ="{% url 'accounts:login' %}">login</a><br>
+  <a href ="{% url 'accounts:signup' %}">signup</a>
+  {%endblock content%}
+</body>
+</html>
+
+
+
